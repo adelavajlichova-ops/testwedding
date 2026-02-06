@@ -6,10 +6,18 @@ const container = document.querySelector(".heart-wrapper");
 let scratching = false;
 
 function initCanvas() {
-    canvas.width = container.offsetWidth;
-    canvas.height = container.offsetHeight;
+    const dpr = window.devicePixelRatio || 2;
+    const rect = container.getBoundingClientRect();
 
-    ctx.drawImage(heartImg, 0, 0, canvas.width, canvas.height);
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+
+    ctx.scale(dpr, dpr);
+
+    ctx.drawImage(heartImg, 0, 0, rect.width, rect.height);
 
 }
 
@@ -158,3 +166,4 @@ function createConfetti() {
         }).onfinish = () => confetti.remove();
     }
 }
+
