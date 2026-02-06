@@ -142,35 +142,44 @@ function createConfetti() {
 
     const colors = ["#D4AF37", "#FFD700", "#C5B358", "#E6BE8A", "#B8860B"];
 
-    for (let i = 0; i < 350; i++) {
+    for (let i = 0; i < 150; i++) {
         const confetti = document.createElement("div");
         confetti.className = "confetti";
 
-        // ROZPTYL PO CELÉ ŠÍØCE: od -5% do 105% šíøky, aby byly i u krajù
-        confetti.style.left = (Math.random() * 110 - 5) + "vw";
-        confetti.style.top = "-20px";
+        // START UPROSTØED OBRAZOVKY
+        confetti.style.left = "50vw";
+        confetti.style.top = "50vh";
+
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
-        const size = Math.random() * 4 + 3 + "px";
+        const size = Math.random() * 6 + 4 + "px"; // Trochu vìtší konfety
         confetti.style.width = size;
         confetti.style.height = size;
         confetti.style.position = "absolute";
-        confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "1px";
+        confetti.style.borderRadius = "50%"; // Kulaté konfety vypadají jako bublinky
 
         confContainer.appendChild(confetti);
 
-        const duration = 8000 + Math.random() * 3000;
-        // POSTUPNÝ NÁSTUP: každá konfeta zaène padat s jiným zpoždìním (0 až 3 sekundy)
-        const delay = Math.random() * 3000;
+        // NÁHODNÝ SMÌR VÝSTØELU (360 stupòù)
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 400 + 200; // Síla výstøelu
+        const destinationX = Math.cos(angle) * velocity;
+        const destinationY = Math.sin(angle) * velocity;
 
         confetti.animate([
-            { transform: `translate3d(0, 0, 0) rotate(0deg)`, opacity: 1 },
-            // VÌTŠÍ ROZPTYL PØI PÁDU: konfety budou "plout" i 100px doleva nebo doprava
-            { transform: `translate3d(${Math.random() * 200 - 100}px, 105vh, 0) rotate(1440deg)`, opacity: 0 }
+            {
+                transform: `translate(-50%, -50%) translate(0, 0) scale(0)`,
+                opacity: 1
+            },
+            {
+                // ROZLET DO STRAN A MÍRNÝ PÁD DOLÙ
+                transform: `translate(-50%, -50%) translate(${destinationX}px, ${destinationY + 100}px) scale(1)`,
+                opacity: 0 // POSTUPNÉ ZMIZENÍ
+            }
         ], {
-            duration: duration,
-            delay: delay, // Tady je to kouzlo postupného padání
-            easing: "linear" // Pro pøirozený pád je lineární pohyb nìkdy lepší
+            duration: Math.random() * 10000 + 9000, // Zmizí po 1-3 sekundách
+            easing: "cubic-bezier(0, .9, .57, 1)", // Rychlý start, pomalý dojezd
+            fill: "forwards"
         }).onfinish = () => confetti.remove();
     }
 }

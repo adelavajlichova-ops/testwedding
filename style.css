@@ -188,6 +188,7 @@ canvas {
     background-color: #f2d74e;
     top: -10px;
     z-index: 10;
+    pointer-events: none;
 }
 
 /* Nastavení pro tablety a počítače (obrazovka širší než 768px) */
