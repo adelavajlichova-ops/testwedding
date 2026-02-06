@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Great Vibes', cursive;
+    font-size: 4.0rem; /* Zvětšeno pro mobil */
     overflow-x: hidden; /* Zabrání vodorovnému posouvání */
 }
 
@@ -99,18 +100,5 @@ canvas {
     display: none !important;
 }
 
-/* Toto se spustí jen na zařízeních s obrazovkou menší než 600px */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2.2rem;
-    }
 
-    #instruction {
-        font-size: 1.2rem;
-    }
-
-    .screen {
-        padding: 20px 10px; /* Menší okraje na mobilu */
-    }
-}
 
