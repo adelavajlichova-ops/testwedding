@@ -22,7 +22,7 @@ body {
     height: 100dvh; /* dvh lépe sedí na mobily */
     background: #fdfaf5;
     margin: 0 auto;
-    padding: 20px; /* Zrušíme padding-top: 10vh a dáme rovnoměrný okraj */
+    padding: 10px; /* Zrušíme padding-top: 10vh a dáme rovnoměrný okraj */
     box-sizing: border-box;
     text-align: center;
     position: relative;
@@ -86,7 +86,7 @@ h1 {
 }
 
 .heart-wrapper {
-    width: 100vw; /* Srdce zabere 90% šířky displeje */
+    width: 100%; /* Srdce zabere 90% šířky displeje */
     max-width: 400px; /* Ale maximálně 400px, aby nebylo obří */
     aspect-ratio: 1 / 1; /* Udrží čtvercový tvar pro canvas */
     margin: 0 auto;
@@ -140,3 +140,4 @@ canvas {
         max-width: 450px; /* Srdce na desktopu může být o něco větší */
     }
 }
+
