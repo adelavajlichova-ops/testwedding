@@ -23,7 +23,7 @@ body {
     background: #fdfaf5;
     padding: 0;
     margin: 0;
-    padding-top: 8vh;
+    padding-top: 10vh;
     box-sizing: border-box;
     text-align: center;
     position: relative;
@@ -117,6 +117,7 @@ canvas {
     top: -10px;
     z-index: 10;
 }
+
 
 
 
