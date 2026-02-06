@@ -80,15 +80,22 @@ function checkReveal() {
     } catch (e) {
         // Pojistka pro pøípad chyby v prohlížeèi
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 2000);
+            window.backupTimer = setTimeout(revealEverything, 1500);
         }
     }
 }
 
 function revealEverything() {
+    const mainTitle = document.getElementById("main-title");
+
     canvas.style.transition = "opacity 1s ease";
     canvas.style.opacity = "0";
     if (instruction) instruction.style.opacity = "0";
+
+    if (mainTitle) {
+        mainTitle.style.transition = "opacity 1s ease";
+        mainTitle.style.opacity = "0";
+    }
 
     setTimeout(() => {
         canvas.style.display = "none";
