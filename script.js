@@ -87,20 +87,35 @@ function checkReveal() {
 
 function revealEverything() {
     const mainTitle = document.getElementById("main-title");
+    const instruction = document.getElementById("instruction");
 
-    canvas.style.transition = "opacity 1s ease";
+    // Sjednocení rychlosti a zpùsobu zmizení (vše trvá 1 sekundu)
+    const transitionStyle = "opacity 1s ease";
+
+    canvas.style.transition = transitionStyle;
     canvas.style.opacity = "0";
-    if (instruction) instruction.style.opacity = "0";
+
+    if (instruction) {
+        instruction.style.transition = transitionStyle;
+        instruction.style.opacity = "0";
+    }
 
     if (mainTitle) {
-        mainTitle.style.transition = "opacity 1s ease";
+        mainTitle.style.transition = transitionStyle;
         mainTitle.style.opacity = "0";
     }
 
+    // Èekáme pøesnì 1 sekundu (1000ms), než prvky úplnì odstraníme z plochy
     setTimeout(() => {
         canvas.style.display = "none";
         if (instruction) instruction.style.display = "none";
-        document.querySelector(".invite").classList.remove("hidden");
+        if (mainTitle) mainTitle.style.display = "none";
+
+        const invite = document.querySelector(".invite");
+        if (invite) {
+            invite.classList.remove("hidden");
+        }
+
         createConfetti();
     }, 1000);
 }
