@@ -46,26 +46,32 @@ heartImg.onload = () => {
 
 function scratch(e) {
     if (!scratching) return;
-    e.preventDefault();
+    
+    // Zamezí scrollování stránky při stírání
+    if (e.cancelable) e.preventDefault();
 
     const rect = canvas.getBoundingClientRect();
+    
+    // Získání souřadnic (ošetření pro myš i dotyk najednou)
+    let clientX, clientY;
+    if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
 
-    // Získání souřadnic kliku/dotyku
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    // --- NOVÝ JEDNODUCHÝ VÝPOČET ---
-    // Jelikož jsme použili ctx.scale(dpr, dpr), stačí nám 
-    // souřadnice relativně k levému hornímu rohu canvasu.
+    // VÝPOČET: Odečteme pozici canvasu od pozice prstu
+    // Toto by mělo fungovat i s ctx.scale(dpr, dpr)
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-
-    // Velikost gumy - teď může být menší (kolem 30-40), 
-    // protože už se nenásobí dpr (např. 2x)
-    ctx.arc(x, y, 35, 0, Math.PI * 2);
+    
+    // Zkusíme dát gumu o něco větší (50), aby to na mobilu bylo pohodlné
+    ctx.arc(x, y, 40, 0, Math.PI * 2); 
     ctx.fill();
 
     checkReveal();
@@ -164,5 +170,6 @@ function createConfetti() {
         }).onfinish = () => confetti.remove();
     }
 }
+
 
 
