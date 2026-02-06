@@ -17,20 +17,20 @@ body {
 }
 
 .screen {
-    width: 100%; /* Už žádných 320px, ale celá šířka */
-    max-width: 500px; /* Volitelné: aby to na počítači nebylo příliš roztažené */
-    height: 100vh; /* Výška přes celý displej */
+    width: 100%;
+    max-width: 500px;
+    height: 100dvh; /* dvh lépe sedí na mobily */
     background: #fdfaf5;
-    padding: 0;
-    margin: 0;
-    padding-top: 10vh;
+    margin: 0 auto;
+    padding: 20px; /* Zrušíme padding-top: 10vh a dáme rovnoměrný okraj */
     box-sizing: border-box;
     text-align: center;
     position: relative;
+    
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Vycentruje srdíčko svisle */
-    align-items: center;
+    justify-content: center; /* TOTO vrátí všechno doprostřed svisle */
+    align-items: center;     /* Vycentruje vodorovně */
     overflow: hidden;
 }
 
@@ -116,6 +116,23 @@ canvas {
     background-color: #f2d74e;
     top: -10px;
     z-index: 10;
+}
+
+/* Nastavení pro tablety a počítače (obrazovka širší než 768px) */
+@media (min-width: 768px) {
+    .screen {
+        justify-content: center; /* Na počítači to vycentruje krásně doprostřed */
+        padding-top: 0; /* Zrušíme ten horní okraj, co jsme dávali kvůli mobilu */
+    }
+
+    h1 {
+        font-size: 5rem; /* Na velkém monitoru si můžeme dovolit větší nadpis */
+        margin-bottom: 30px;
+    }
+
+    .heart-wrapper {
+        max-width: 450px; /* Srdce na desktopu může být o něco větší */
+    }
 }
 
 
