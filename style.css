@@ -44,13 +44,12 @@ h1 {
 }
 
 #instruction {
-    margin-top: 15px;
+    margin-top: 0;
     color: #b8860b;
     font-style: italic;
     font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 400;
-    margin-top: 25px;
     letter-spacing: 1px;
 }
 
@@ -117,5 +116,6 @@ canvas {
     top: -10px;
     z-index: 10;
 }
+
 
 
