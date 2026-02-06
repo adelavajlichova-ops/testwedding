@@ -1,5 +1,9 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #fdfaf5; /* Pozadí celé stránky */
     margin: 0;
@@ -9,7 +13,6 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Great Vibes', cursive;
-    font-size: 4.0rem; /* Zvětšeno pro mobil */
     overflow-x: hidden; /* Zabrání vodorovnému posouvání */
 }
 
@@ -36,7 +39,44 @@ h1 {
     margin-top: 0;
     margin-bottom: 20px;
     font-family: 'Great Vibes', cursive;
+    font-weight: 400;
     padding: 0 10px;
+}
+
+#instruction {
+    margin-top: 15px;
+    color: #b8860b;
+    font-style: italic;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+
+.invite {
+    position: absolute; /* Vytrhne prvek z toku a umožní ho dát "přes" srdce */
+    top: 50%; /* Posune střed na 50 % výšky */
+    left: 50%; /* Posune střed na 50 % šířky */
+    transform: translate(-50%, -50%); /* Přesné vycentrování na střed */
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Text je "pod" srdcem, objeví se, až srdce zmizí */
+}
+
+.invite h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.invite p {
+    font-size: 3.5rem;
+    line-height: 3.0;
+    margin: 5px 0;
+    font-weight: 400;
 }
 
 .heart-wrapper {
@@ -54,15 +94,8 @@ canvas {
     touch-action: none;
 }
 
-#instruction {
-    margin-top: 15px;
-    color: #b8860b;
-    font-style: italic;
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-top: 25px;
-    letter-spacing: 1px;
+.hidden {
+    display: none !important;
 }
 
 #confetti-container {
@@ -84,21 +117,5 @@ canvas {
     top: -10px;
     z-index: 10;
 }
-
-
-.invite {
-    position: absolute; /* Vytrhne prvek z toku a umožní ho dát "přes" srdce */
-    top: 50%; /* Posune střed na 50 % výšky */
-    left: 50%; /* Posune střed na 50 % šířky */
-    transform: translate(-50%, -50%); /* Přesné vycentrování na střed */
-    width: 100%;
-    text-align: center;
-    z-index: 1; /* Text je "pod" srdcem, objeví se, až srdce zmizí */
-}
-
-.hidden {
-    display: none !important;
-}
-
 
 
