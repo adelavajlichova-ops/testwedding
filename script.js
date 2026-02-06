@@ -88,6 +88,7 @@ function checkReveal() {
 function revealEverything() {
     const mainTitle = document.getElementById("main-title");
     const instruction = document.getElementById("instruction");
+    const initials = document.querySelector(".initials");
 
     // Sjednocení rychlosti a zpùsobu zmizení (vše trvá 1 sekundu)
     const transitionStyle = "opacity 1s ease";
@@ -98,6 +99,11 @@ function revealEverything() {
     if (instruction) {
         instruction.style.transition = transitionStyle;
         instruction.style.opacity = "0";
+    }
+
+    if (initials) {
+        initials.style.transition = "opacity 1s ease";
+        initials.style.opacity = "0";
     }
 
     if (mainTitle) {

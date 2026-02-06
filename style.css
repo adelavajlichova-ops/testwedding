@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 * {
     box-sizing: border-box;
@@ -26,11 +26,10 @@ body {
     box-sizing: border-box;
     text-align: center;
     position: relative;
-    
     display: flex;
     flex-direction: column;
     justify-content: center; /* TOTO vrátí všechno doprostřed svisle */
-    align-items: center;     /* Vycentruje vodorovně */
+    align-items: center; /* Vycentruje vodorovně */
     overflow: hidden;
 }
 
@@ -44,6 +43,14 @@ h1 {
     padding: 0 10px;
 }
 
+.initials {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem; /* Velikost podle tvého gusta */
+    color: #b8860b; /* Zlatá barva jako u nadpisu */
+    margin-top: 0; /* Mezera od srdíčka */
+    margin-bottom: 0; /* Přitáhne nápis "Setři srdíčko" blíž k iniciálám */
+}
+
 #instruction {
     margin-top: 0;
     color: #b8860b;
@@ -53,7 +60,6 @@ h1 {
     font-weight: 400;
     letter-spacing: 2px;
 }
-
 
 .invite {
     position: absolute; /* Vytrhne prvek z toku a umožní ho dát "přes" srdce */
@@ -73,7 +79,7 @@ h1 {
 }
 
 .invite p {
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 3.0;
     margin: 5px 0;
     font-weight: 400;
@@ -134,9 +140,3 @@ canvas {
         max-width: 450px; /* Srdce na desktopu může být o něco větší */
     }
 }
-
-
-
-
-
-
