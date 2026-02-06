@@ -23,7 +23,7 @@ body {
     background: #fdfaf5;
     padding: 0;
     margin: 0;
-    padding-top: 15vh;
+    padding-top: 12vh;
     font-size: 4.0rem; /* Zvětšeno pro mobil */
     box-sizing: border-box;
     text-align: center;
@@ -49,9 +49,9 @@ h1 {
     color: #b8860b;
     font-style: italic;
     font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 
@@ -117,5 +117,6 @@ canvas {
     top: -10px;
     z-index: 10;
 }
+
 
 
