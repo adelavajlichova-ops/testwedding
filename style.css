@@ -1,0 +1,93 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background: #fdfaf5; /* Pozadí celé stránky bude bílé */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Zabrání vodorovnému posouvání */
+}
+
+.screen {
+    width: 100%; /* Už žádných 320px, ale celá šířka */
+    max-width: 500px; /* Volitelné: aby to na počítači nebylo příliš roztažené */
+    height: 100vh; /* Výška přes celý displej */
+    background: #fdfaf5;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vycentruje srdíčko svisle */
+    align-items: center;
+}
+
+h1 {
+    color: #b8860b;
+    margin-bottom: 20px;
+    font-family: 'Great Vibes', cursive;
+}
+
+.heart-wrapper {
+    width: 100vw; /* Srdce zabere 90% šířky displeje */
+    max-width: 400px; /* Ale maximálně 400px, aby nebylo obří */
+    aspect-ratio: 1 / 1; /* Udrží čtvercový tvar pro canvas */
+    margin: 20px auto;
+    position: relative;
+    z-index: 2
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none;
+}
+
+#instruction {
+    margin-top: 15px;
+    color: #b8860b;
+    font-style: italic;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2rem;
+}
+
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Aby konfety neblokovaly klikání */
+    z-index: 999; /* Aby byly nad vším ostatním */
+    overflow: hidden; /* Pojistka proti vyjíždění konfet ven */
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f2d74e;
+    top: -10px;
+    z-index: 10;
+}
+
+
+.invite {
+    position: absolute; /* Vytrhne prvek z toku a umožní ho dát "přes" srdce */
+    top: 50%; /* Posune střed na 50 % výšky */
+    left: 50%; /* Posune střed na 50 % šířky */
+    transform: translate(-50%, -50%); /* Přesné vycentrování na střed */
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Text je "pod" srdcem, objeví se, až srdce zmizí */
+}
+
+.hidden {
+    display: none !important;
+}
+
