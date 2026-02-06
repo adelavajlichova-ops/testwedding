@@ -1,22 +1,26 @@
 const canvas = document.getElementById("scratch");
 const ctx = canvas.getContext("2d");
 const instruction = document.getElementById("instruction");
+const container = document.querySelector(".heart-wrapper");
 
 let scratching = false;
 
-// Snížil jsem na 800 pro lepší plynulost na mobilech, 
-// ale klidnì nechej 1000, pokud chceš extra ostré srdce.
-canvas.width = 800;
-canvas.height = 800;
+function initCanvas() {
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+
+    ctx.drawImage(heartImg, 0, 0, canvas.width, canvas.height);
+
+}
 
 const heartImg = new Image();
 heartImg.src = "heart.png";
 
 heartImg.onload = () => {
-    ctx.drawImage(heartImg, 0, 0, canvas.width, canvas.height);
+    initCanvas();
 };
 
-// Eventy pro myš i dotyk
+// Eventy pro myÅ¡ i dotyk
 ["mousedown", "touchstart"].forEach(evt =>
     canvas.addEventListener(evt, (e) => {
         scratching = true;
@@ -38,23 +42,23 @@ function scratch(e) {
 
     const rect = canvas.getBoundingClientRect();
 
-    // Získání souøadnic kliku/dotyku v oknì
+    // ZÃ­skÃ¡nÃ­ souÅ™adnic kliku/dotyku v oknÄ›
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    // --- KLÍÈOVÁ OPRAVA MÌØÍTKA ---
-    // Pøepoèítáme pomìr mezi skuteènými pixely canvasu (800) 
-    // a tím, jak velký se zobrazuje na displeji (rect.width)
+    // --- KLÃÄŒOVÃ OPRAVA MÄšÅ˜ÃTKA ---
+    // PÅ™epoÄÃ­tÃ¡me pomÄ›r mezi skuteÄnÃ½mi pixely canvasu (800) 
+    // a tÃ­m, jak velkÃ½ se zobrazuje na displeji (rect.width)
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
 
-    // Výsledná pozice x a y vynásobená tímto pomìrem
+    // VÃ½slednÃ¡ pozice x a y vynÃ¡sobenÃ¡ tÃ­mto pomÄ›rem
     const x = (clientX - rect.left) * scaleX;
     const y = (clientY - rect.top) * scaleY;
 
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    // Velikost gumy (70 je ideální pro rozlišení 800)
+    // Velikost gumy (70 je ideÃ¡lnÃ­ pro rozliÅ¡enÃ­ 800)
     ctx.arc(x, y, 70, 0, Math.PI * 2);
     ctx.fill();
 
@@ -73,12 +77,12 @@ function checkReveal() {
 
         const percentage = (cleared / (pixels.length / 4)) * 100;
 
-        // Pokud je setøeno více než 20 % celkové plochy
+        // Pokud je setÅ™eno vÃ­ce neÅ¾ 20 % celkovÃ© plochy
         if (percentage > 20) {
             revealEverything();
         }
     } catch (e) {
-        // Pojistka pro pøípad chyby v prohlížeèi
+        // Pojistka pro pÅ™Ã­pad chyby v prohlÃ­Å¾eÄi
         if (!window.backupTimer) {
             window.backupTimer = setTimeout(revealEverything, 1500);
         }
@@ -90,7 +94,7 @@ function revealEverything() {
     const instruction = document.getElementById("instruction");
     const initials = document.querySelector(".initials");
 
-    // Sjednocení rychlosti a zpùsobu zmizení (vše trvá 1 sekundu)
+    // SjednocenÃ­ rychlosti a zpÅ¯sobu zmizenÃ­ (vÅ¡e trvÃ¡ 1 sekundu)
     const transitionStyle = "opacity 1s ease";
 
     canvas.style.transition = transitionStyle;
@@ -111,7 +115,7 @@ function revealEverything() {
         mainTitle.style.opacity = "0";
     }
 
-    // Èekáme pøesnì 1 sekundu (1000ms), než prvky úplnì odstraníme z plochy
+    // ÄŒekÃ¡me pÅ™esnÄ› 1 sekundu (1000ms), neÅ¾ prvky ÃºplnÄ› odstranÃ­me z plochy
     setTimeout(() => {
         canvas.style.display = "none";
         if (instruction) instruction.style.display = "none";
