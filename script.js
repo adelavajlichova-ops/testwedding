@@ -50,24 +50,22 @@ function scratch(e) {
 
     const rect = canvas.getBoundingClientRect();
 
-    // Získání souřadnic kliku/dotyku v okně
+    // Získání souřadnic kliku/dotyku
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    // --- KLÍČOVÁ OPRAVA MĚŘÍTKA ---
-    // Přepočítáme poměr mezi skutečnými pixely canvasu (800) 
-    // a tím, jak velký se zobrazuje na displeji (rect.width)
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    // Výsledná pozice x a y vynásobená tímto poměrem
-    const x = (clientX - rect.left) * scaleX;
-    const y = (clientY - rect.top) * scaleY;
+    // --- NOVÝ JEDNODUCHÝ VÝPOČET ---
+    // Jelikož jsme použili ctx.scale(dpr, dpr), stačí nám 
+    // souřadnice relativně k levému hornímu rohu canvasu.
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    // Velikost gumy (70 je ideální pro rozlišení 800)
-    ctx.arc(x, y, 70, 0, Math.PI * 2);
+
+    // Velikost gumy - teď může být menší (kolem 30-40), 
+    // protože už se nenásobí dpr (např. 2x)
+    ctx.arc(x, y, 35, 0, Math.PI * 2);
     ctx.fill();
 
     checkReveal();
@@ -166,4 +164,5 @@ function createConfetti() {
         }).onfinish = () => confetti.remove();
     }
 }
+
 
