@@ -256,7 +256,7 @@ canvas {
     transform: translateX(-50%);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1s ease, visibility 1s ease;
+    transition: opacity 1s ease 4s, visibility 1s ease 4s;
     z-index: 9999 !important; /* Maximální priorita */
     width: auto; /* Změna z 100% na auto, aby se lépe klikalo */
     white-space: nowrap;
@@ -271,12 +271,15 @@ canvas {
 .calendar-btn {
     display: inline-block;
     padding: 15px 30px; /* Větší plocha pro prst */
-    background-color: #c5a059;
-    color: #ffffff !important;
+    /*background-color: #c5a059;
+    color: #ffffff !important;*/
+    background: transparent;
+    color: #c5a059 !important;
+    border: 2px solid #c5a059;
     text-decoration: none !important;
     font-family: 'Great Vibes', cursive;
     font-size: 1.5rem;
-    font-line: 1.5;
+    /*font-line: 1.5;*/
     border-radius: 30px; /*zaoblení rohů*/
     /*font-weight: bold;*/
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);

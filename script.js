@@ -1,26 +1,26 @@
-const canvas = document.getElementById("scratch");
+Ôªøconst canvas = document.getElementById("scratch");
 const ctx = canvas.getContext("2d");
 const instruction = document.getElementById("instruction");
 const container = document.querySelector(".heart-wrapper");
 
-// Zabr·nÏnÌ nechtÏnÈmu chov·nÌ v prohlÌûeËi
+// ZabrÔøΩnÔøΩnÔøΩ nechtÔøΩnÔøΩmu chovÔøΩnÔøΩ v prohlÔøΩeÔøΩi
 canvas.addEventListener('dragstart', (e) => e.preventDefault());
 canvas.addEventListener('selectstart', (e) => e.preventDefault());
 
 let scratching = false;
 
-// 1. Deklarujeme obr·zek jen JEDNOU
+// 1. Deklarujeme obrÔøΩzek jen JEDNOU
 const heartImg = new Image();
 heartImg.src = "heart.png";
 
-// 2. PoËk·me na naËtenÌ obr·zku a pak spustÌme vöe ostatnÌ
+// 2. PoÔøΩkÔøΩme na naÔøΩtenÔøΩ obrÔøΩzku a pak spustÔøΩme vÔøΩe ostatnÔøΩ
 heartImg.onload = () => {
     initCanvas();
 };
 
-// Pokud by se obr·zek nenaËetl (chyba v cestÏ), spustÌme to aspoÚ se zlatou barvou
+// Pokud by se obrÔøΩzek nenaÔøΩetl (chyba v cestÔøΩ), spustÔøΩme to aspoÔøΩ se zlatou barvou
 heartImg.onerror = () => {
-    console.error("Obr·zek heart.png nebyl nalezen!");
+    console.error("ObrÔøΩzek heart.png nebyl nalezen!");
     initCanvas();
 };
 
@@ -36,17 +36,17 @@ function initCanvas() {
 
     ctx.scale(dpr, dpr);
 
-    // V˝chozÌ zlat· barva (pokud by obr·zek selhal)
+    // VÔøΩchozÔøΩ zlatÔøΩ barva (pokud by obrÔøΩzek selhal)
     ctx.fillStyle = "#b8860b";
     ctx.fillRect(0, 0, w, h);
 
-    // VykreslenÌ obr·zku srdce p¯es barvu
+    // VykreslenÔøΩ obrÔøΩzku srdce pÔøΩes barvu
     if (heartImg.complete && heartImg.naturalWidth !== 0) {
         ctx.drawImage(heartImg, 0, 0, w, h);
     }
 }
 
-// Ud·losti pro stÌr·nÌ
+// UdÔøΩlosti pro stÔøΩrÔøΩnÔøΩ
 ["mousedown", "touchstart"].forEach(evt =>
     canvas.addEventListener(evt, (e) => {
         scratching = true;
@@ -107,7 +107,7 @@ function checkReveal() {
         }
     } catch (e) {
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 1500);
+            window.backupTimer = setTimeout(revealEverything, 2000);
         }
     }
 }
@@ -127,12 +127,12 @@ function revealEverything() {
     setTimeout(() => {
         canvas.style.display = "none";
 
-        // POJISTKA PRO TLA»ÕTKO: 
-        // ZobrazÌme ho aû ve chvÌli, kdy srdce zmizÌ, aby se nekrylo s canvasem
+        // POJISTKA PRO TLAÔøΩÔøΩTKO: 
+        // ZobrazÔøΩme ho aÔøΩ ve chvÔøΩli, kdy srdce zmizÔøΩ, aby se nekrylo s canvasem
         const calWrapper = document.getElementById("calendar-wrapper");
         if (calWrapper) {
             calWrapper.classList.add("visible");
-            console.log("TlaËÌtko aktivov·no"); // Tohle uvidÌö v konzoli prohlÌûeËe
+            console.log("TlaÔøΩÔøΩtko aktivovÔøΩno"); // Tohle uvidÔøΩ v konzoli prohlÔøΩeÔøΩe
         }
     }, 1000);
 }
@@ -149,13 +149,13 @@ function createConfetti() {
         confetti.style.left = "50vw";
         confetti.style.top = "50vh";
 
-        // N·hodn˝ v˝bÏr barvy a tvaru
+        // NÔøΩhodnÔøΩ vÔøΩbÔøΩr barvy a tvaru
         const color = colors[Math.floor(Math.random() * colors.length)];
         const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
         confetti.style.backgroundColor = color;
 
-        // NastavenÌ rozmÏr˘
+        // NastavenÔøΩ rozmÔøΩrÔøΩ
         const size = Math.random() * 8 + 8 + "px";
         confetti.style.width = size;
         confetti.style.height = size;
@@ -165,10 +165,10 @@ function createConfetti() {
             confetti.style.borderRadius = "50%";
         } else if (shape === "diamond") {
             confetti.style.transform = "rotate(45deg)";
-            // Aby se rotace z transformace netloukla s animacÌ, 
-            // nastavÌme ji radÏji p¯Ìmo v klÌËov˝ch snÌmcÌch nÌûe
+            // Aby se rotace z transformace netloukla s animacÔøΩ, 
+            // nastavÔøΩme ji radÔøΩji pÔøΩÔøΩmo v klÔøΩÔøΩovÔøΩch snÔøΩmcÔøΩch nÔøΩe
         }
-        // Square (ËtvereËek) nepot¯ebuje extra styl, je to default
+        // Square (ÔøΩtvereÔøΩek) nepotÔøΩebuje extra styl, je to default
 
         confContainer.appendChild(confetti);
 
@@ -177,7 +177,7 @@ function createConfetti() {
         const destX = Math.cos(angle) * velocity;
         const destY = Math.sin(angle) * velocity;
 
-        // N·hodn· rotace pro efekt "mÌh·nÌ" ve vzduchu
+        // NÔøΩhodnÔøΩ rotace pro efekt "mÔøΩhÔøΩnÔøΩ" ve vzduchu
         const randomRotation = Math.random() * 1080 - 540;
 
         confetti.animate([
@@ -190,13 +190,12 @@ function createConfetti() {
                 opacity: 0
             }
         ], {
-            duration: Math.random() * 3000 + 5000, // Trv·nÌ 5-8 sekund
+            duration: Math.random() * 3000 + 5000, // TrvÔøΩnÔøΩ 5-8 sekund
             easing: "cubic-bezier(0.1, 0.5, 0.2, 1)",
             fill: "forwards"
         }).onfinish = () => confetti.remove();
     }
 }
-
 
 function addSparklesToText(elementId) {
     const element = document.getElementById(elementId);
@@ -206,7 +205,7 @@ function addSparklesToText(elementId) {
         const sparkle = document.createElement("div");
         sparkle.className = "sparkle";
 
-        // N·hodn· pozice v r·mci textu
+        // NÔøΩhodnÔøΩ pozice v rÔøΩmci textu
         const rect = element.getBoundingClientRect();
         const x = Math.random() * rect.width;
         const y = Math.random() * rect.height;
@@ -214,38 +213,38 @@ function addSparklesToText(elementId) {
         sparkle.style.left = (rect.left + window.scrollX + x) + "px";
         sparkle.style.top = (rect.top + window.scrollY + y) + "px";
 
-        // N·hodn· animace
+        // NÔøΩhodnÔøΩ animace
         sparkle.style.animation = `sparkleAnim ${Math.random() * 0.5 + 0.5}s linear forwards`;
 
         document.body.appendChild(sparkle);
 
-        // OdstranÏnÌ jiskry po animaci
+        // OdstranÔøΩnÔøΩ jiskry po animaci
         setTimeout(() => sparkle.remove(), 1000);
-    }, 150); // Jak rychle se jiskry objevujÌ (menöÌ ËÌslo = vÌc jisk¯enÌ)
+    }, 150); // Jak rychle se jiskry objevujÔøΩ (menÔøΩÔøΩ ÔøΩÔøΩslo = vÔøΩc jiskÔøΩenÔøΩ)
 }
 
-// SpustÌme jisk¯enÌ pro nadpis a instrukce
+// SpustÔøΩme jiskÔøΩenÔøΩ pro nadpis a instrukce
 addSparklesToText("main-title");
 addSparklesToText("instruction");
 addSparklesToText("wedding-date"); 
 
+/*
 function downloadIcs() {
-    const title = "Svatba Anicky a Pitra"; // Bez diakritiky je to pro kalend·¯ jistÏjöÌ
-    const description = "Svatebni veseli";
-    const location = "U Zamku 525, 415 01 Teplice 1";
+    // Definice udÔøΩlosti (bez diakritiky pro maximÔøΩlnÔøΩ kompatibilitu)
+    const title = "Svatba Anicky a Pitra";
+    const location = "Zahradni a plesovy dum, Teplice";
     const startDate = "20260606T130000";
     const endDate = "20260606T235900";
 
+    // SestavenÔøΩ obsahu ICS souboru
     const icsContent = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
-        "PRODID:-//Svatba//CZ",
         "BEGIN:VEVENT",
         "DTSTART:" + startDate,
         "DTEND:" + endDate,
         "SUMMARY:" + title,
         "LOCATION:" + location,
-        "DESCRIPTION:" + description,
         "END:VEVENT",
         "END:VCALENDAR"
     ].join("\n");
@@ -253,15 +252,31 @@ function downloadIcs() {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const url = window.URL.createObjectURL(blob);
 
+    // VytvoÔøΩenÔøΩ skrytÔøΩho odkazu
     const link = document.createElement('a');
     link.href = url;
     link.setAttribute('download', 'svatba.ics');
-    link.setAttribute('target', '_blank'); // D˘leûitÈ pro mobily
+
+    // Trik pro iPhone: pÔøΩidÔøΩnÔøΩ do dokumentu a vynucenÔøΩ kliknutÔøΩ
     document.body.appendChild(link);
     link.click();
 
+    // VyÔøΩiÔøΩtÔøΩnÔøΩ pamÔøΩti
     setTimeout(() => {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
-    }, 100);
+    }, 200);
+}
+*/
+
+function addToGoogleCalendar() {
+    const title = encodeURIComponent("Svatba Aniƒçky a P√≠tra");
+    const details = encodeURIComponent("Zveme V√°s na na≈°i svatbu v Zahradn√≠m a plesov√©m domƒõ.");
+    const location = encodeURIComponent("U Z√°mku 525, 415 01 Teplice 1");
+    const startDate = "20260606T100000";
+    const endDate = "20260606T235900";
+
+    const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}&sf=true&output=xml`;
+
+    window.open(googleUrl, '_blank');
 }
