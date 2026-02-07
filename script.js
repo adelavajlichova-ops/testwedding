@@ -44,6 +44,7 @@ function initCanvas() {
     if (heartImg.complete && heartImg.naturalWidth !== 0) {
         ctx.drawImage(heartImg, 0, 0, w, h);
     }
+    document.querySelector('.invite-container').style.opacity = "1";
 }
 
 // Ud�losti pro st�r�n�

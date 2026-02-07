@@ -160,6 +160,7 @@ h1 {
     align-items: center;
     z-index: 2; /* Pod canvasem */
     pointer-events: none;
+    opacity: 0;
 }
 
 .invite-text {
