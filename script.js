@@ -103,12 +103,12 @@ function checkReveal() {
 
         const percentage = (cleared / (pixels.length / 4)) * 100;
 
-        if (percentage > 70) {
+        if (percentage > 60) {
             revealEverything();
         }
     } catch (e) {
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 5000);
+            window.backupTimer = setTimeout(revealEverything, 3000);
         }
     }
 }
@@ -280,9 +280,4 @@ function addToGoogleCalendar() {
     const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}&sf=true&output=xml`;
 
     window.open(googleUrl, '_blank');
-
 }
-
-
-
-
