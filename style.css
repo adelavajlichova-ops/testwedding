@@ -308,3 +308,38 @@ canvas {
     opacity: 0 !important;
     visibility: hidden !important;
 }
+
+.calendar-icon {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #b8860b;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    padding-top: 4px; /* Prostor pro "kroužky" kalendáře */
+}
+
+    /* Tyhle dva kousky vytvoří ty typické kroužky nahoře na kalendáři */
+    .calendar-icon::before, .calendar-icon::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        width: 2px;
+        height: 6px;
+        background: #b8860b;
+        border-radius: 2px;
+    }
+
+    .calendar-icon::before {
+        left: 5px;
+    }
+
+    .calendar-icon::after {
+        right: 5px;
+    }
