@@ -150,7 +150,7 @@ function revealEverything() {
         const calWrapper = document.getElementById("calendar-wrapper");
         if (calWrapper) {
             calWrapper.classList.add("visible");
-            console.log("Tla��tko aktivov�no"); // Tohle uvid� v konzoli prohl�e�e
+            console.log("Tlačítko aktivováno"); // Tohle uvid� v konzoli prohl�e�e
         }
     }, 1000);
 }
@@ -243,7 +243,7 @@ function addSparklesToText(elementId) {
 
 // Spust�me jisk�en� pro nadpis a instrukce
 addSparklesToText("main-title");
-addSparklesToText("instruction");
+addSparklesToText("initials");
 addSparklesToText("wedding-date"); 
 
 /*
@@ -287,14 +287,44 @@ function downloadIcs() {
 }
 */
 
-function addToGoogleCalendar() {
-    const title = encodeURIComponent("Svatba Aničky a Pítra");
-    const details = encodeURIComponent("Zveme Vás na naši svatbu v Zahradním a plesovém domě.");
-    const location = encodeURIComponent("U Zámku 525, 415 01 Teplice 1");
+function addToCalendar() {
+    const title = "Svatba Aničky a Pítra";
+    const details = "Zveme Vás na naši svatbu v Zahradním a plesovém domě.";
+    const location = "U Zámku 525, 415 01 Teplice 1";
     const startDate = "20260606T100000";
     const endDate = "20260606T235900";
 
-    const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}&sf=true&output=xml`;
+    // 1. Zjistíme, zda je uživatel na zařízení od Apple (iPhone, iPad, Mac)
+    const isApple = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
 
-    window.open(googleUrl, '_blank');
+    if (isApple) {
+        // Pro Apple vytvoříme soubor .ics (v kalendáři se otevře jako nová událost)
+        const icsContent = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "BEGIN:VEVENT",
+            "URL:" + document.URL,
+            "DTSTART:" + startDate,
+            "DTEND:" + endDate,
+            "SUMMARY:" + title,
+            "DESCRIPTION:" + details,
+            "LOCATION:" + location,
+            "END:VEVENT",
+            "END:VCALENDAR"
+        ].join("\n");
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'svatba.ics');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        // Pro ostatní (Android, PC) použijeme Google Calendar link
+        const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&sf=true&output=xml`;
+        window.open(googleUrl, '_blank');
+    }
 }

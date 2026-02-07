@@ -10,14 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=block" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=190">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=190.5">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 
     <div class="screen">
         <h1 id="main-title">Zapište si datum</h1>
-        <div class="initials">Anička & Pítr</div>
+        <div id="initials" class="initials">Anička & Pítr</div>
 
         <div class="heart-wrapper">
             <img src="listky.png" id="heart-background" class="hidden-at-start" alt="pozadi">
@@ -38,14 +40,14 @@
         <p id="instruction">Setřete srdíčko</p>
 
         <div id="calendar-wrapper">
-            <a href="javascript:void(0)" class="calendar-btn" onclick="addToGoogleCalendar()">
-                Přidat do kalendáře
+            <a href="javascript:void(0)" class="calendar-btn" onclick="addToCalendar()">
+                <span>📅</span>Přidat do kalendáře
             </a>
         </div>
 
         <div id="confetti-container"></div>
     </div>
 
-    <script src="script.js?v=199"></script>
+    <script src="script.js?v=199.5"></script>
 </body>
 </html>
