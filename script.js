@@ -108,7 +108,7 @@ function checkReveal() {
         }
     } catch (e) {
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 5000);
+            window.backupTimer = setTimeout(revealEverything, 8000);
         }
     }
 }
@@ -282,5 +282,6 @@ function addToGoogleCalendar() {
     window.open(googleUrl, '_blank');
 
 }
+
 
 
