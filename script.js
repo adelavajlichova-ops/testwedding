@@ -36,21 +36,32 @@ function initCanvas() {
 
     ctx.scale(dpr, dpr);
 
-    // V�choz� zlat� barva (pokud by obr�zek selhal)
+    // 1. OKAMŽITĚ vyplníme srdce zlatou barvou
     ctx.fillStyle = "#b8860b";
     ctx.fillRect(0, 0, w, h);
 
-    // Vykreslen� obr�zku srdce p�es barvu
+    // 2. Vykreslíme obrázek srdce (ten, co se maže)
     if (heartImg.complete && heartImg.naturalWidth !== 0) {
         ctx.drawImage(heartImg, 0, 0, w, h);
     }
-    document.querySelector('.invite-container').style.opacity = "1";
 
+    // 3. ZOBRAZÍME PODKLAD (lístky)
+    const bg = document.getElementById('heart-background');
+    if (bg) {
+        bg.style.opacity = "1";
+        bg.style.visibility = "visible";
+    }
+
+    // 4. ZOBRAZÍME TEXT POZVÁNKY
     const invite = document.querySelector('.invite-container');
     if (invite) {
-        invite.style.display = 'flex'; // Vrátíme display na flex
-        invite.style.opacity = '1';    // Pojistka pro viditelnost
+        invite.classList.remove('hidden-at-start');
+        invite.style.display = 'flex';
+        invite.style.opacity = '1';
     }
+
+    // 5. ZOBRAZÍME CELÝ OBAL
+    container.classList.add('ready');
 }
 
 // Ud�losti pro st�r�n�

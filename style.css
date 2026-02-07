@@ -99,6 +99,12 @@ h1 {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;*/
     background: transparent !important;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.heart-wrapper.ready {
+    opacity: 1 !important;
 }
 
 #heart-background {
@@ -109,6 +115,8 @@ h1 {
     height: 100%;
     object-fit: contain;
     z-index: 1; /* Nejnižší vrstva */
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 #scratch {
@@ -260,12 +268,13 @@ canvas {
     z-index: 9999 !important; /* Maximální priorita */
     width: auto; /* Změna z 100% na auto, aby se lépe klikalo */
     white-space: nowrap;
+    pointer-events: none;
 }
 
 #calendar-wrapper.visible {
         opacity: 1 !important;
         visibility: visible !important;
-        display: block !important;
+        pointer-events: auto !important;
     }
 
 .calendar-btn {
@@ -292,4 +301,9 @@ canvas {
 
 .hidden {
     display: none;
+}
+
+.hidden-at-start {
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
