@@ -108,7 +108,7 @@ function checkReveal() {
         }
     } catch (e) {
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 2000);
+            window.backupTimer = setTimeout(revealEverything, 3000);
         }
     }
 }
@@ -280,4 +280,5 @@ function addToGoogleCalendar() {
     const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}&sf=true&output=xml`;
 
     window.open(googleUrl, '_blank');
+
 }
