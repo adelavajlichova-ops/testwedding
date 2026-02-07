@@ -103,7 +103,7 @@ function checkReveal() {
 
         const percentage = (cleared / (pixels.length / 4)) * 100;
 
-        if (percentage > 20) {
+        if (percentage > 80) {
             revealEverything();
         }
     } catch (e) {
@@ -282,4 +282,5 @@ function addToGoogleCalendar() {
     window.open(googleUrl, '_blank');
 
 }
+
 
