@@ -165,7 +165,7 @@ h1 {
 
 .invite-text {
     position: relative;
-    top: -20px;
+    top: -35px;
     text-align: center;
     z-index: 2; /* Úplně vespod */
     width: 80%;
@@ -293,5 +293,4 @@ canvas {
 
 .hidden {
     display: none;
-
 }

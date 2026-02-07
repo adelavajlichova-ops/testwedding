@@ -103,12 +103,12 @@ function checkReveal() {
 
         const percentage = (cleared / (pixels.length / 4)) * 100;
 
-        if (percentage > 60) {
+        if (percentage > 20) {
             revealEverything();
         }
     } catch (e) {
         if (!window.backupTimer) {
-            window.backupTimer = setTimeout(revealEverything, 3000);
+            window.backupTimer = setTimeout(revealEverything, 2500);
         }
     }
 }
