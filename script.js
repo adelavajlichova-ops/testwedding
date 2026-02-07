@@ -45,6 +45,12 @@ function initCanvas() {
         ctx.drawImage(heartImg, 0, 0, w, h);
     }
     document.querySelector('.invite-container').style.opacity = "1";
+
+    const invite = document.querySelector('.invite-container');
+    if (invite) {
+        invite.style.display = 'flex'; // Vrátíme display na flex
+        invite.style.opacity = '1';    // Pojistka pro viditelnost
+    }
 }
 
 // Ud�losti pro st�r�n�
