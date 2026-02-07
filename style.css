@@ -58,7 +58,7 @@ h1 {
     color: #b8860b;
     font-style: normal;
     font-family: 'Archivo Narrow', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 2px;
 }
@@ -361,4 +361,5 @@ canvas {
         width: 18px;
         height: 18px;
     }
+
 }
