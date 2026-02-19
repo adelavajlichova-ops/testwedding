@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -39,9 +39,25 @@
 
         <p id="instruction">Setřete srdíčko</p>
 
+        <div id="info-page" class="hidden">
+            <h2 class="info-title">Podrobnosti svatby</h2>
+            <div class="info-content">
+                <p><strong>Obřad:</strong> 10:00 v Zahradním domě v Teplicích</p>
+                <p><strong>Program:</strong> TO BE DONE</p>
+                <p><strong>Dary:</strong> Největším darem pro nás bude vaše přítomnost...</p>
+            </div>
+            <button onclick="backToInvite()" class="calendar-btn" style="margin-top: 20px;">Zpět na pozvánku</button>
+        </div>
+
         <div id="calendar-wrapper">
+            <a href="javascript:void(0)" class="calendar-btn" onclick="showInfo()">
+                <div class="calendar-icon">i</div>
+                <span>Pro podrobné informace klikněte sem</span>
+            </a>
+
             <a href="javascript:void(0)" class="calendar-btn" onclick="addToCalendar()">
-                <div class="calendar-icon">666</div> Přidat do kalendáře
+                <div class="calendar-icon">666</div>
+                <span>Přidat do kalendáře</span>
             </a>
         </div>
 
@@ -51,4 +67,3 @@
     <script src="script.js?v=199.5"></script>
 </body>
 </html>
-

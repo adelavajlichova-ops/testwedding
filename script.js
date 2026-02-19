@@ -244,7 +244,7 @@ function addSparklesToText(elementId) {
 // Spust�me jisk�en� pro nadpis a instrukce
 addSparklesToText("main-title");
 addSparklesToText("initials");
-addSparklesToText("wedding-date"); 
+addSparklesToText("wedding-date");
 
 /*
 function downloadIcs() {
@@ -327,4 +327,31 @@ function addToCalendar() {
         const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&sf=true&output=xml`;
         window.open(googleUrl, '_blank');
     }
+
+}
+
+
+function showInfo() {
+    // Najdeme hlavní elementy úvodní strany (nadpis, srdce, instrukce atd.)
+    const mainTitle = document.getElementById("main-title");
+    const initials = document.getElementById("initials");
+    const heart = document.querySelector(".heart-wrapper");
+    const instruction = document.getElementById("instruction");
+    const calendar = document.getElementById("calendar-wrapper");
+    const infoPage = document.getElementById("info-page");
+
+    // Skryjeme úvod (můžeš je buď smazat nebo jim dát display: none)
+    mainTitle.style.display = "none";
+    initials.style.display = "none";
+    heart.style.display = "none";
+    instruction.style.display = "none";
+    calendar.style.display = "none";
+
+    // Zobrazíme informační stránku
+    infoPage.classList.remove("hidden");
+}
+
+function backToInvite() {
+    // Pokud se host chce vrátit zpět, všechno zase prohodíme
+    location.reload(); // Nejednodušší cesta, jak se vrátit do původního stavu
 }
