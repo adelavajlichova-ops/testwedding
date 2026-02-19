@@ -40,11 +40,39 @@
         <p id="instruction">Setřete srdíčko</p>
 
         <div id="info-page" class="hidden">
+            <img src="heart.png" class="info-heart-icon" alt="srdíčko">
+
             <h2 class="info-title">Podrobnosti svatby</h2>
             <div class="info-content">
                 <p><strong>Obřad:</strong> 10:00 v Zahradním domě v Teplicích</p>
+                <p>
+                    <strong>Adresa:</strong> U Zámku 525, Teplice<br>
+                    <a href="https://maps.app.goo.gl/uXyXzJzXzJzXzJzX7" target="_blank" style="color: #b8860b; font-size: 0.9rem;">
+                        📍 Otevřít v mapách
+                    </a>
+                </p>
                 <p><strong>Program:</strong> TO BE DONE</p>
                 <p><strong>Dary:</strong> Největším darem pro nás bude vaše přítomnost...</p>
+                <hr style="border: 0; border-top: 1px solid #c5a059; margin: 30px 0; opacity: 0.3;">
+
+                <form action="https://formspree.io/f/mojnndqn" method="POST" id="rsvp-form">
+                    <h3 style="font-family: 'Great Vibes', cursive; color: #b8860b; font-size: 2rem;">Potvrzení účasti</h3>
+
+                    <input type="email" name="email" placeholder="Váš e-mail" required class="rsvp-input">
+
+                    <div class="rsvp-radio-group">
+                        <label>
+                            <input type="radio" name="attendance" value="ano" required> Přijdu rád/a
+                        </label>
+                        <label>
+                            <input type="radio" name="attendance" value="ne"> Bohužel nemohu
+                        </label>
+                    </div>
+
+                    <textarea name="message" placeholder="Vzkaz pro novomanžele (nebo dieta...)" class="rsvp-input" rows="3"></textarea>
+
+                    <button type="submit" class="calendar-btn" style="width: 100%; margin-top: 10px;">Odeslat odpověď</button>
+                </form>
             </div>
             <button onclick="backToInvite()" class="calendar-btn" style="margin-top: 20px;">Zpět na pozvánku</button>
         </div>

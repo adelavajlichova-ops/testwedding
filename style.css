@@ -288,7 +288,7 @@ canvas {
     align-items: center !important;
     justify-content: center !important;
     gap: 15px;
-    padding: 12px 20px; /* Větší plocha pro prst */
+    padding: 6px 15px; /* Větší plocha pro prst */
     /*background-color: #c5a059;
     color: #ffffff !important;*/
     background: transparent;
@@ -305,7 +305,7 @@ canvas {
     border-radius: 30px; /*zaoblení rohů*/
     /*font-weight: bold;*/
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    min-width: 280px; /* Aby byla obě tlačítka stejně široká */
+    min-width: 220px; /* Aby byla obě tlačítka stejně široká */
     pointer-events: auto !important; /* POJISTKA: Aby na to šlo kliknout */
 }
 
@@ -396,5 +396,56 @@ canvas {
     font-family: 'Archivo Narrow', sans-serif;
     font-size: 1.1rem;
     line-height: 1.6;
-    max-width: 400px;
+    width: 100%; /* Roztažení na dostupnou šířku */
+    max-width: 320px; /* Aby text nebyl na širokých mobilech moc roztažený */
+    margin: 0 auto; /* Pojistka pro vycentrování bloku */
+}
+
+.info-content p {
+    margin: 15px 0;
+    width: 100%;
+}
+
+.info-heart-icon {
+    width: 100px; /* Velikost srdíčka, můžeš upravit podle sebe */
+    height: auto;
+    margin-bottom: 10px; /* Mezera mezi srdíčkem a nadpisem */
+    display: block;
+    /* Pokud by srdíčko nebylo uprostřed, tohle ho tam dotlačí: */
+    margin-left: auto;
+    margin-right: auto;
+    /* Volitelné: jemný stín, aby ladilo s tlačítky */
+}
+
+#rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    padding-bottom: 30px;
+}
+
+.rsvp-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5a059;
+    background: transparent;
+    border-radius: 10px;
+    font-family: 'Archivo Narrow', sans-serif;
+    color: #2d2d2d;
+}
+
+.rsvp-radio-group {
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Archivo Narrow', sans-serif;
+    color: #2d2d2d;
+    font-size: 0.9rem;
+}
+
+.rsvp-radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }

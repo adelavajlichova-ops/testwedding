@@ -355,3 +355,23 @@ function backToInvite() {
     // Pokud se host chce vrátit zpět, všechno zase prohodíme
     location.reload(); // Nejednodušší cesta, jak se vrátit do původního stavu
 }
+
+const form = document.getElementById('rsvp-form');
+if (form) {
+    form.addEventListener('submit', function (e) {
+        // Necháme Formspree, aby udělalo svou práci (odeslání)
+        // Ale přidáme malý trik, aby uživatel viděl potvrzení přímo u nás
+
+        const formContainer = document.getElementById('rsvp-form');
+
+        // Počkáme vteřinu a pak schováme formulář a ukážeme díky
+        setTimeout(() => {
+            formContainer.innerHTML = `
+                <div style="text-align: center; padding: 20px; animation: fadeIn 1s;">
+                    <h3 style="font-family: 'Great Vibes', cursive; color: #b8860b; font-size: 2.5rem;">Děkujeme!</h3>
+                    <p style="font-family: 'Archivo Narrow', sans-serif;">Vaše odpověď byla v pořádku odeslána. <br> Moc se na Vás těšíme!</p>
+                </div>
+            `;
+        }, 500);
+    });
+}
