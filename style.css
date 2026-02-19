@@ -379,11 +379,14 @@ canvas {
     height: 100%;
     background: #fdfaf5;
     z-index: 10000; /* Musí být nad vším */
-    padding: 40px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto; /* Kdyby bylo textu hodně, půjde scrollovat */
+    justify-content: flex-start; /* Začne nahoře, aby se dalo scrollovat dolů */
+    text-align: center;
+    box-sizing: border-box; /* Zajistí, že padding "nevyfoukne" stránku do stran */
 }
 
 .info-title {
@@ -397,7 +400,7 @@ canvas {
     font-size: 1.1rem;
     line-height: 1.6;
     width: 100%; /* Roztažení na dostupnou šířku */
-    max-width: 320px; /* Aby text nebyl na širokých mobilech moc roztažený */
+    max-width: 300px; /* Aby text nebyl na širokých mobilech moc roztažený */
     margin: 0 auto; /* Pojistka pro vycentrování bloku */
 }
 
@@ -433,6 +436,8 @@ canvas {
     border-radius: 10px;
     font-family: 'Archivo Narrow', sans-serif;
     color: #2d2d2d;
+    box-sizing: border-box !important;
+    margin: 5px 0;
 }
 
 .rsvp-radio-group {
@@ -448,4 +453,11 @@ canvas {
     align-items: center;
     gap: 5px;
     cursor: pointer;
+}
+
+/* Tlačítko zpět - dáme mu trochu prostor nahoře, aby se nelepilo na RSVP */
+.back-btn {
+    margin-top: 30px;
+    margin-bottom: 50px; /* Extra místo dole, aby se dalo doscrolovat */
+    flex-shrink: 0; /* Zabráni tlačítku, aby se "smrsklo" */
 }
